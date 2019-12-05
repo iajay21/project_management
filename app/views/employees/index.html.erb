@@ -1,0 +1,44 @@
+<h2>Employee List</h2>
+
+<%= link_to "Create Employee", new_employee_path %>
+<%= link_to "Home", root_path %>
+
+<% if @employees.present? %>
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Company Name</th>
+	    <th>Description</th>
+	    <th>Tools</th>
+	  </tr>
+	  <% @employees.each do |e| %>
+		  <tr>
+		    <td><%= link_to e.name, employee_path(e) %></td>
+		    <td><%= e.company_name %></td>
+		    <td><%= e.description %></td>
+		    <th><%= link_to "edit", edit_employee_path(e) %>
+		    	<%= link_to "delete", employee_path(e), method: :delete, data: {confirm: "Are you sure?"} %>
+		    </th>
+		  </tr>
+		<% end %>
+	</table>
+<% end %>
+
+
+<style>
+	table {
+	  font-family: arial, sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+	}
+
+	td, th {
+	  border: 1px solid #dddddd;
+	  text-align: left;
+	  padding: 8px;
+	}
+
+	tr:nth-child(even) {
+	  background-color: #dddddd;
+	}
+</style>

@@ -1,0 +1,42 @@
+<h2>Project List</h2>
+
+<%= link_to "Create_Project", new_project_path%>
+<%= link_to "Home", root_path %>
+
+<% if @projects.present? %>
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Description</th>
+	    <th>Tools</th>
+	  </tr>
+	  <% @projects.each do |p| %>
+		  <tr>
+		    <td><%= link_to p.name, project_path(p) %></td>
+		    <td><%= p.description %></td>
+		    <th><%= link_to "edit", edit_project_path(p) %>
+		    	<%= link_to "delete", project_path(p), method: :delete, data: {confirm: "Are you sure?"} %>
+		    </th>
+		  </tr>
+		<% end %>
+	</table>
+<% end %>
+
+
+<style>
+	table {
+	  font-family: arial, sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+	}
+
+	td, th {
+	  border: 1px solid #dddddd;
+	  text-align: left;
+	  padding: 8px;
+	}
+
+	tr:nth-child(even) {
+	  background-color: #dddddd;
+	}
+</style>

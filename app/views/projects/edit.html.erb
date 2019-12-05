@@ -1,0 +1,17 @@
+<h2>Update Project</h2>
+
+<%= form_for @project do |f| %>
+  Project name: <%= f.text_field :name %>
+  <br/>
+  <br/>
+  Description : <%= f.text_area :description %>
+  <br/>
+  <br/>
+
+  Employee : <%= select_tag 'employee_ids[]', options_for_select(@employees.map { |e| [e.name, e.id] }, :selected => @project.employee_projects.pluck(:employee_id)), multiple: true %>  
+  <br/>
+  <br/>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back", projects_path %>

@@ -1,0 +1,14 @@
+<h2>Project Detail</h2>
+
+<p> Name: <%= @project.name %></p>
+<p> description: <%= @project.description %></p>
+<% if @employees.present? %>
+	<p> employees: 
+		<% @employees.each do |e| %>
+			<h4><%= link_to e.name, employee_path(e) %></h4>
+		<% end %>
+	</p>
+<% end %>
+
+<%= link_to "Back", projects_path %>
+
