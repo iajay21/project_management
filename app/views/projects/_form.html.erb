@@ -1,0 +1,14 @@
+<%= simple_form_for(@project, html: { multipart: true }) do |f| %>
+  Project name: <%= f.text_field :name %>
+  <br/>
+  <br/>
+  Description : <%= f.text_area :description %>
+  <br/>
+  <br/>
+  <%= f.association :employees, as: :check_boxes %>
+  <br/>
+  <br/>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "Back", projects_path %>

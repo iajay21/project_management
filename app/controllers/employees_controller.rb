@@ -5,12 +5,10 @@ class EmployeesController < ApplicationController
 	end
 
 	def new
-		# return render body: params.inspect
 		@employee = Employee.new		
 	end
 
 	def create
-		# return render body: params.inspect
 		@employee = Employee.new(employee_params)
 		if @employee.save
 			redirect_to employees_path
@@ -45,6 +43,7 @@ class EmployeesController < ApplicationController
 		@employee = Employee.find(params[:id])
 		@projects = @employee.projects
 	end
+	
 	private
 
 	def employee_params
